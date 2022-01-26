@@ -1,0 +1,103 @@
+
+<!-- PWA Progressive Web Apps
+No son applicaciones móviles ni de escritorio
+Son simulaciones de aplicaciones nativas, corren en el navegador, simulan toda la esetructura de ser una aplicación nativa
+Se deben desarrollar con un enfoque mobile first: se vea bien para dispositivos móviles, responsive
+Fundamentales que deben cumplir para que el navegador la entienda como PWA:
+1-Debe correr bajo protocolo seguro https o un localhost
+2-Contar con un ServiceWorker
+3-Tener un archivo manifest.json 
+Ventajas
+-Son detectables: el navegador detecta que es PWA y la trabaja como tal
+-Instalables
+-Corren sin conexión
+-Acceden a recursos nativos del dispositivo
+-Reconectables: base de datos local para modo Offline, cuando se conecta, el sistema lo actualiza en la BD real
+-Responsivas
+-Seguras: trabajan a fuerza en un protocolo seguro debido al ServiceWorker, se exigen muchas reglas de seguridad
+-Pensan muy poco
+-Siempre están actualizadas: Se trabaja por caché, cuando hay una nueva versión, el sistema descarga la nueva versión
+ServiceWorker:
+-Características de los navegadores modernos que nos permite ser un intermediario entre nuestra aplicación, el cliente y el hardware
+-Puede utilizar la memoria física del dispositivo, las cámaras, verificar si está en línea o no, lanzar notificaciones push, etc
+-Es un archivo javascript independiente de nuestra apliación
+-Los ServiceWorker tienen poder absoluto sobre nuestras aplicaciones, por lo  mismo es necesario correr en un protocolo seguro: HTTPS
+-Después de que se cargue por primera vez nuestra aplicación desde el dispositivo de nuestro cliente,
+no lo va a volver a hacer, Todo va a ser desde caché si el servis worker cambia estas respuestas. Nuestro usuario jamás va a poder volver a ver nuestra aplicación a menos de que limpie la caché manualmente
+y vuelva a hacer la petición de carga completa.
+Iconos: 
+PWA IMAGE GENERATOR
+pwa-asset-generator package
+npx pwa-asset-generator 
+npx mantiene actualizado el package
+npx pwa-asset-generator favicon.png ./assets -m manifest.json -i index.html
+-->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Meta tags PWA -->
+    <meta name="theme-color" content="#333333">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true"><!--amigable a tactil -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="./favicon.png" type="image/png">
+
+    <!-- manifest -->
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Title -->
+    <title>React CDN</title>
+
+    <!-- Scripts -->
+    <script crossorigin="" src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin="" src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="apple-touch-icon" href="assets/apple-icon-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" src="./components/Contador.js"></script>
+    <script type="text/babel">
+      ReactDOM.render(<Contador />, document.getElementById("root"));
+    </script>
+    <script src="./register.js"></script>
+  </body>
+</html>
